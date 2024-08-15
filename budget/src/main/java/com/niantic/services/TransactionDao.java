@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -127,5 +128,45 @@ public class TransactionDao
                             , transactions.getTransactionDate()
                             , transactions.getAmount()
                             , transactions.getNotes());
+    }
+
+    public ArrayList<Transactions> getCategoryById(int queryId)
+    {
+        ArrayList<Transactions> transactions = new ArrayList<>();
+
+        String sql = """
+                SELECT transactions(transaction_id
+                    , user_id
+                    , category_id
+                    , vendor_id
+                    , transaction_date
+                    , amount
+                    , notes)
+                FROM transactions
+                WHERE category_id = ?
+                """;
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, queryId);
+
+        while(row.next())
+        {
+            int transactionId = row.getInt("transaction_id");
+            int userId = row.getInt("user_id");
+            int vendorId = row.getInt("vendor_id");
+            LocalDate transactionDate = row.getDate("transaction_date").toLocalDate();
+            double amount = row.getDouble("amount");
+            String notes = row.getString("notes");
+
+
+
+            Transactions transaction = new Transactions(transactionId,
+                    userId, queryId,
+                    vendorId, transactionDate
+                    , amount, notes);
+
+            transactions.add(transaction);
+        }
+
+        return transactions;
     }
 }
