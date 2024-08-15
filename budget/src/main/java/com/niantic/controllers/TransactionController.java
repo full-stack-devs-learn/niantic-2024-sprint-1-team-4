@@ -3,11 +3,8 @@ package com.niantic.controllers;
 import com.niantic.models.Transactions;
 import com.niantic.services.TransactionDao;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
@@ -51,6 +48,15 @@ public class TransactionController
         transactionDao.addTransaction(transaction);
         model.addAttribute("transactions", transaction);
         return "transactions/add_success";
+    }
+
+    @GetMapping("/transactions/reports")
+    public String reportByCategory(Model model, @RequestParam(required = false, defaultValue = "0") int categoryId)
+    {
+        var transactions = transactionDao.getCategoryById(categoryId);
+        model.addAttribute("transactions", transactions);
+
+        return "transactions/report_by_category";
     }
 
 }

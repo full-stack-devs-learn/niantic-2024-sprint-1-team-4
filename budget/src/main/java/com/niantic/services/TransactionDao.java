@@ -135,13 +135,13 @@ public class TransactionDao
         ArrayList<Transactions> transactions = new ArrayList<>();
 
         String sql = """
-                SELECT transactions(transaction_id
+                SELECT transaction_id
                     , user_id
                     , category_id
                     , vendor_id
                     , transaction_date
                     , amount
-                    , notes)
+                    , notes
                 FROM transactions
                 WHERE category_id = ?
                 """;
