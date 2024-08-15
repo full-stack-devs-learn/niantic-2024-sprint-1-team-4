@@ -14,7 +14,7 @@ public class CategoryDao
 
     public CategoryDao()
     {
-        String databaseUrl = "jdbc:mysql://localhost:3306/northwind";
+        String databaseUrl = "jdbc:mysql://localhost:3306/budget";
         String userName = "root";
         String password = "P@ssw0rd";
         DataSource dataSource = new BasicDataSource(){{

@@ -12,17 +12,14 @@ import java.util.ArrayList;
 @Controller
 public class TransactionController
 {
-    TransactionDao transactionDao = new TransactionDao();
+    private TransactionDao transactionDao = new TransactionDao();
 
     @GetMapping("/transactions")
-    public String getAllTransactions(Model model, String last)
+    public String getAllTransactions(Model model)
     {
-        ArrayList<Transactions> transactions = null;
+        ArrayList<Transactions> transactions;
 
-        if(last == null)
-        {
-            transactions = transactionDao.getTransactions();
-        }
+        transactions = transactionDao.getTransactions();
 
         model.addAttribute("transactions", transactions);
 
