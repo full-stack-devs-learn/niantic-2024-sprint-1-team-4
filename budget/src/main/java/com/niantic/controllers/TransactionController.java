@@ -5,7 +5,9 @@ import com.niantic.services.TransactionDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
@@ -33,6 +35,22 @@ public class TransactionController
         model.addAttribute("transaction", transaction);
 
         return "transactions/details";
+    }
+
+    @GetMapping("/transactions/add")
+    public String addTransaction(Model model)
+    {
+        model.addAttribute("transaction", new Transactions());
+        model.addAttribute("action", "add");
+        return "transactions/add_edit";
+    }
+
+    @PostMapping("/transactions/add")
+    public String addTransaction(Model model, @ModelAttribute("transactions") Transactions transaction)
+    {
+        transactionDao.addTransaction(transaction);
+        model.addAttribute("transactions", transaction);
+        return "transactions/add_success";
     }
 
 }

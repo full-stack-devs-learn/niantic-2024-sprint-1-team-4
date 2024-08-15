@@ -105,4 +105,27 @@ public class TransactionDao
 
         return transaction;
     }
+
+    public void addTransaction(Transactions transactions)
+    {
+        String sql = """
+                INSERT INTO transactions(transaction_id
+                    , user_id
+                    , category_id
+                    , vendor_id
+                    , transaction_date
+                    , amount
+                    , notes)
+                    VALUES(?, ?, ?, ?, ?, ?, ?)
+                """;
+
+        jdbcTemplate.update(sql
+                            , transactions.getTransactionId()
+                            , transactions.getUserId()
+                            , transactions.getCategoryId()
+                            , transactions.getVendorId()
+                            , transactions.getTransactionDate()
+                            , transactions.getAmount()
+                            , transactions.getNotes());
+    }
 }
