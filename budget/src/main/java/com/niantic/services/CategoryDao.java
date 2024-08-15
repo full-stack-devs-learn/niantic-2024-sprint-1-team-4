@@ -1,6 +1,6 @@
 package com.niantic.services;
 
-import com.niantic.models.Category;
+import com.niantic.models.Categories;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -26,9 +26,9 @@ public class CategoryDao
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public ArrayList<Category> getCategories()
+    public ArrayList<Categories> getCategories()
     {
-        ArrayList<Category> categories = new ArrayList<>();
+        ArrayList<Categories> categories = new ArrayList<>();
 
         String sql = """
                 SELECT category_id
@@ -45,7 +45,7 @@ public class CategoryDao
             String categoryName  = row.getString("category_name");
             String description = row.getString("description");
 
-            Category category = new Category(categoryId, categoryName, description);
+            Categories category = new Categories(categoryId, categoryName, description);
 
             categories.add(category);
         }

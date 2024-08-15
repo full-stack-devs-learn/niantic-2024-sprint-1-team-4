@@ -1,19 +1,19 @@
 package com.niantic.models;
 
-public class Category
+public class Categories
 {
     private int categoryId;
     private String categoryName;
     private String description;
 
-    public Category(int categoryId, String categoryName, String description)
+    public Categories(int categoryId, String categoryName, String description)
     {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.description = description;
     }
 
-    public Category()
+    public Categories()
     {
     }
 
