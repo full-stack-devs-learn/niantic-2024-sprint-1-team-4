@@ -1,4 +1,4 @@
-package com.niantic;
+package com.niantic.services;
 
 import com.niantic.models.Category;
 import org.apache.commons.dbcp2.BasicDataSource;
