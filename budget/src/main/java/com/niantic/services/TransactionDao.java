@@ -1,6 +1,5 @@
 package com.niantic.services;
 
-import com.niantic.models.Transaction;
 import com.niantic.models.Transactions;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
