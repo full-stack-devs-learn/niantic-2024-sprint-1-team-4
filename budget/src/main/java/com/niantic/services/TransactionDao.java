@@ -110,18 +110,16 @@ public class TransactionDao
     public void addTransaction(Transactions transactions)
     {
         String sql = """
-                INSERT INTO transactions(transaction_id
-                    , user_id
+                INSERT INTO transactions(user_id
                     , category_id
                     , vendor_id
                     , transaction_date
                     , amount
                     , notes)
-                    VALUES(?, ?, ?, ?, ?, ?, ?)
+                    VALUES(?, ?, ?, ?, ?, ?)
                 """;
 
         jdbcTemplate.update(sql
-                            , transactions.getTransactionId()
                             , transactions.getUserId()
                             , transactions.getCategoryId()
                             , transactions.getVendorId()
@@ -168,5 +166,15 @@ public class TransactionDao
         }
 
         return transactions;
+    }
+
+    public void deleteTransaction(int Id)
+    {
+        String sql = """
+                DELETE FROM transactions
+                WHERE transaction_id = ?
+                """;
+
+        jdbcTemplate.update(sql, Id);
     }
 }

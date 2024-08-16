@@ -59,4 +59,20 @@ public class TransactionController
         return "transactions/report_by_category";
     }
 
+    @GetMapping("/transactions/{id}/delete")
+    public String deleteCategory(Model model, @PathVariable int id)
+    {
+        var transaction = transactionDao.getTransactionById(id);
+        model.addAttribute(transaction);
+
+        return "transactions/delete";
+    }
+
+    @PostMapping("/transactions/{id}/delete")
+    public String deleteCategory(@PathVariable int id)
+    {
+        transactionDao.deleteTransaction(id);
+
+        return "redirect:/transactions";
+    }
 }

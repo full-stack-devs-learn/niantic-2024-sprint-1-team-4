@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -39,5 +40,22 @@ public class CategoryController
         categoryDao.addCategory(category);
         model.addAttribute("categories", category);
         return "categories/add_success";
+    }
+
+    @GetMapping("/categories/{id}/delete")
+    public String deleteCategory(Model model, @PathVariable int id)
+    {
+        var category = categoryDao.getCategoryById(id);
+        model.addAttribute(category);
+
+        return "categories/delete";
+    }
+
+    @PostMapping("/categories/{id}/delete")
+    public String deleteCategory(@PathVariable int id)
+    {
+        categoryDao.deleteCategory(id);
+
+        return "redirect:/categories";
     }
 }
