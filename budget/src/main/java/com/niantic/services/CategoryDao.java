@@ -53,4 +53,17 @@ public class CategoryDao
         return categories;
     }
 
+    public void addCategory(Categories categories)
+    {
+        String sql = """
+                INSERT INTO categories(category_id. category_name, description)
+                VALUES(?, ?, ?);
+                """;
+
+        jdbcTemplate.update(sql
+                , categories.getCategoryId()
+                , categories.getCategoryName()
+                , categories.getDescription());
+    }
+
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+
+
+</head>
+<body>
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<main class="container mt-4">
+    <h1>Budget Tracker</h1>
+    <br>
+    <a class="btn btn-outline-info" th:href="@{/categories/add}">Add Category</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Category Name</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="category:${categories}">
+            <td th:text="${category.categoryId}"></td>
+            <td th:text="${category.categoryName}"></td>
+            <td th:text="${category.description}"></td>
+        </tr>
+        </thead>
+    </table>
+
+</main>
+</body>
+</html>

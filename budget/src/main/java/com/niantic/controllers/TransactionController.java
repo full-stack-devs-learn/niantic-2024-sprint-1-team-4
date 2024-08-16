@@ -25,7 +25,7 @@ public class TransactionController
         return "transactions/index";
     }
 
-    @GetMapping("/transactions/{id}")
+    @GetMapping("/transactions/reports/{id}")
     public String getTransactionById(Model model, @PathVariable int id)
     {
         var transaction = transactionDao.getTransactionById(id);

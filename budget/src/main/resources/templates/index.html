@@ -7,32 +7,11 @@
 <body>
     <nav th:replace="fragments/nav :: nav"></nav>
 
-<main class="container mt-4">
-    <h1>Budget Tracker</h1>
-    <a class="btn btn-outline-info" th:href="@{/transactions/add}">Add Transaction</a>
-
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Transaction Id</th>
-            <th>User Id</th>
-            <th>Category Id</th>
-            <th>Vendor Id</th>
-            <th>Transaction Date</th>
-            <th>Amount</th>
-            <th>Notes</th>
-        </tr>
-        <tr th:each="transaction:${transactions}">
-            <td th:text="${transaction.transactionId}"></td>
-            <td th:text="${transaction.userId}"></td>
-            <td th:text="${transaction.categoryId}"></td>
-            <td th:text="${transaction.vendorId}"></td>
-            <td th:text="${transaction.transactionDate}"></td>
-            <td th:text="${transaction.amount}"></td>
-            <td th:text="${transaction.notes}"></td>
-        </tr>
-        </thead>
-    </table>
+<main class="container mt-4 text-center">
+    <br>
+    <h1>Welcome to Budget Pal</h1>
+    <br>
+    <a class="btn btn-outline-info btn-lg" th:href="@{/transactions/add}">Add Transaction</a>
 
 </main>
 </body>
