@@ -1,12 +1,13 @@
 package com.niantic.controllers;
 
-import com.niantic.models.Categories;
+import com.niantic.models.Transactions;
 import com.niantic.models.Vendors;
-import com.niantic.services.CategoryDao;
 import com.niantic.services.VendorDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class VendorController
 {
     private VendorDao vendorDao = new VendorDao();
 
-    @GetMapping("/vendor")
+    @GetMapping("/vendors")
     public String getAllVendors(Model model)
     {
         ArrayList<Vendors> vendors;
@@ -25,11 +26,18 @@ public class VendorController
     }
 
     @GetMapping("/vendors/add")
-    public String addVendors(Model model)
+    public String addVendor(Model model)
     {
         model.addAttribute("vendors", new Vendors());
         model.addAttribute("action", "add");
         return "vendors/add_edit";
     }
 
+    @PostMapping("/vendors/add")
+    public String addVendor(Model model, @ModelAttribute("vendors") Vendors vendor)
+    {
+        vendorDao.addVendor(vendor);
+        model.addAttribute("vendors", vendor);
+        return "vendors/add_success";
+    }
 }

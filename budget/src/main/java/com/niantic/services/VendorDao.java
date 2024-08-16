@@ -57,7 +57,7 @@ public class VendorDao
     public void addVendor(Vendors vendors)
     {
         String sql = """
-                INSERT INTO vendors(vendor_id. vendor_name, website)
+                INSERT INTO vendors(vendor_id, vendor_name, website)
                 VALUES(?, ?, ?);
                 """;
 

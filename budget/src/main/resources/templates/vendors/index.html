@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+
+
 </head>
 <body>
-$END$
+<nav th:replace="fragments/nav :: nav"></nav>
+
+<main class="container mt-4">
+    <h1>Vendors</h1>
+    <br>
+    <a class="btn btn-outline-info" th:href="@{/vendors/add}">Add Vendor</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Vendor Id</th>
+            <th>Vendor Name</th>
+            <th>Website</th>
+        </tr>
+        <tr th:each="vendor:${vendors}">
+            <td th:text="${vendor.vendorId}"></td>
+            <td th:text="${vendor.vendorName}"></td>
+            <td th:text="${vendor.website}"></td>
+        </tr>
+        </thead>
+    </table>
+
+</main>
 </body>
 </html>
