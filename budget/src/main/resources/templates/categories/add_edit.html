@@ -12,17 +12,14 @@
     <h1 th:if="${action} == 'add'">Add Category</h1>
     <h1 th:if="${action} == 'edit'">Edit Category</h1>
 
-    <form action="#" th:object="${transaction}" method="post">
+    <form action="#" th:object="${categories}" method="post">
         <div class="form-floating-mb-3">
-            <label th:for="*{categoryId}">Category Id</label>
-            <input class="form-control" type="text" th:field="*{categoryId}">
-        </div>
-        <div class="form-floating-mb-3">
-            <label th:for="*{categoryName}">Vendor Id</label>
+            <label th:for="*{categoryName}">Category Name</label>
             <input class="form-control" type="text" th:field="*{categoryName}">
         </div>
+
         <div class="form-floating-mb-3">
-            <label th:for="*{description}">Transaction Date</label>
+            <label th:for="*{description}">Description</label>
             <input class="form-control" type="text" th:field="*{description}">
         </div>
         <input class="btn btn-outline-success" type="submit" value="Save">

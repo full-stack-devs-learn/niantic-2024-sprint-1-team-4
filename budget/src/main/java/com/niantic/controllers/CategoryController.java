@@ -1,10 +1,13 @@
 package com.niantic.controllers;
 
 import com.niantic.models.Categories;
+import com.niantic.models.Vendors;
 import com.niantic.services.CategoryDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
@@ -29,5 +32,12 @@ public class CategoryController
         model.addAttribute("action", "add");
         return "categories/add_edit";
     }
-    
+
+    @PostMapping("/categories/add")
+    public String addCategory(Model model, @ModelAttribute("categories") Categories category)
+    {
+        categoryDao.addCategory(category);
+        model.addAttribute("categories", category);
+        return "categories/add_success";
+    }
 }

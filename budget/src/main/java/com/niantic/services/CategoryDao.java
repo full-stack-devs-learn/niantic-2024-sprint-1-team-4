@@ -56,7 +56,7 @@ public class CategoryDao
     public void addCategory(Categories categories)
     {
         String sql = """
-                INSERT INTO categories(category_id. category_name, description)
+                INSERT INTO categories(category_id, category_name, description)
                 VALUES(?, ?, ?);
                 """;
 
