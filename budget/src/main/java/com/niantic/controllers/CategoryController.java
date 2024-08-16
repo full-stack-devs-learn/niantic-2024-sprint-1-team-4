@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 
 @Controller
-public class CategoriesController
+public class CategoryController
 {
     private CategoryDao categoryDao = new CategoryDao();
     
