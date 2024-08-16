@@ -8,19 +8,20 @@
 <body>
 <nav th:replace="fragments/nav :: nav"></nav>
 
-
-<form action="#"  method="get">
-
-    <div class="form-floating-mb-3">
-        <label for="categoryId">Category Id</label>
-        <input class="form-control" type="text" name="categoryId" id="categoryId">
-    </div>
-
-    <input class="btn btn-outline-success" type="submit" value="Save">
-</form>
-
-
 <main class="container mt-4">
+
+    <form action="#"  method="get">
+
+        <div class="form-outline w-25">
+            <label for="categoryId">Category Id:</label>
+            <input class="form-control" type="text" name="categoryId" id="categoryId">
+        </div>
+
+        <input class="btn btn-outline-success" type="submit" value="Search">
+    </form>
+
+    <br>
+
     <h1>Transactions by Category</h1>
 
     <table class="table table-striped">
