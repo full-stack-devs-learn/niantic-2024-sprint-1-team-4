@@ -16,7 +16,8 @@ public class CategoriesController
     @GetMapping("/categories")
     public String getAllCategories(Model model)
     {
-        ArrayList<Categories> categories = null;
+        ArrayList<Categories> categories;
+        categories = categoryDao.getCategories();
         model.addAttribute("categories", categories);
         return "categories/index";
     }
