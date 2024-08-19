@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="fragments/head :: head">
+<html xmlns:th="http://www.thymeleaf.org">
 
-</head>
+<head th:replace="fragments/head :: head"></head>
 
 <body>
 
@@ -10,7 +9,6 @@
 
 <main class="container mt-4">
     <h1 th:if="${action} == 'add'">Add Category</h1>
-    <h1 th:if="${action} == 'edit'">Edit Category</h1>
 
     <form action="#" th:object="${categories}" method="post">
         <div class="form-floating-mb-3">

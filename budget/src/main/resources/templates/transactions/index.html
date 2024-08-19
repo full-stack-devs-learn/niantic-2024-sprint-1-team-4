@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head">
 
+<head th:replace="fragments/head :: head"></head>
 
-</head>
 <body>
 <nav th:replace="fragments/nav :: nav"></nav>
 
@@ -12,6 +10,7 @@
     <h1>Budget Tracker</h1>
     <br>
     <a class="btn btn-outline-info" th:href="@{/transactions/add}">Add Transaction</a>
+
     <br><br>
 
     <table class="table table-striped table-dark">
